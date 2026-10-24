@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light dark">
+  <title>Rekomendasi AI | XYZ WisataNusa AI</title>
+</head>
+<body>
+  <header>
+    <p><strong>XYZ WisataNusa AI</strong></p>
+    <nav aria-label="Menu utama">
+      <ul>
+        <li><a href="index.html">Beranda</a></li>
+        <li><a href="destinasi.html">Destinasi</a></li>
+        <li><a href="rekomendasi.html">Rekomendasi AI</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <h1>Rekomendasi wisata AI</h1>
+    <p>Isi preferensimu, lalu sistem menghitung destinasi yang paling cocok.</p>
+
+    <form action="rekomendasi.html" method="post">
+      <fieldset>
+        <legend>Jenis wisata yang kamu suka</legend>
+        <label><input type="checkbox" name="jenis" value="pantai"> Pantai</label>
+        <label><input type="checkbox" name="jenis" value="alam"> Alam</label>
+        <label><input type="checkbox" name="jenis" value="budaya"> Budaya</label>
+        <label><input type="checkbox" name="jenis" value="kuliner"> Kuliner</label>
+      </fieldset>
+
+      <fieldset>
+        <legend>Suasana</legend>
+        <label><input type="radio" name="suasana" value="tenang" checked> Tenang</label>
+        <label><input type="radio" name="suasana" value="ramai"> Ramai</label>
+      </fieldset>
+
+      <p>
+        <label for="anggaran">Anggaran per orang (Rp)</label>
+        <input type="number" id="anggaran" name="anggaran" min="0" step="10000" value="100000" required>
+      </p>
+      <p>
+        <label for="durasi">Durasi kunjungan</label>
+        <select id="durasi" name="durasi">
+          <option value="1">1 hari</option>
+          <option value="2">2 hari</option>
+          <option value="3">3 hari atau lebih</option>
+        </select>
+      </p>
+      <p>
+        <label for="catatan">Catatan tambahan</label><br>
+        <textarea id="catatan" name="catatan" rows="3" cols="40"></textarea>
+      </p>
+
+      <button type="submit">Lihat rekomendasi</button>
+      <button type="reset">Kosongkan isian</button>
+    </form>
+
+    <section aria-labelledby="hasil" aria-live="polite">
+      <h2 id="hasil">Hasil rekomendasi</h2>
+      <ol>
+        <li>
+          <article>
+            <h3>Pantai Biru</h3>
+            <p>Kecocokan: <meter min="0" max="100" value="92">92%</meter> 92%</p>
+            <a href="destinasi.html#pantai-biru">Lihat detail Pantai Biru</a>
+          </article>
+        </li>
+        <li>
+          <article>
+            <h3>Desa Wisata Lestari</h3>
+            <p>Kecocokan: <meter min="0" max="100" value="78">78%</meter> 78%</p>
+            <a href="destinasi.html#desa-lestari">Lihat detail Desa Wisata Lestari</a>
+          </article>
+        </li>
+      </ol>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 PT Bootleg- XYZ WisataNusa AI </p>
+  </footer>
+</body>
+</html>

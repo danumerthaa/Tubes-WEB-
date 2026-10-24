@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light dark">
+  <title>Destinasi | XYZ WisataNusa AI</title>
+</head>
+<body>
+  <!-- HEADER + NAV: sama di semua halaman. Di React/Vue/Svelte nanti jadi komponen Navbar -->
+  <header>
+    <p><strong>XYZ WisataNusa AI</strong></p>
+    <nav aria-label="Menu utama">
+      <ul>
+        <li><a href="index.html">Beranda</a></li>
+        <li><a href="destinasi.html">Destinasi</a></li>
+        <li><a href="rekomendasi.html">Rekomendasi AI</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Daftar destinasi</h1>
+
+    <form action="destinasi.html" method="get" role="search">
+      <p>
+        <label for="cari">Cari destinasi</label>
+        <input type="search" id="cari" name="q" placeholder="Contoh: pantai">
+      </p>
+      <p>
+        <label for="kategori">Kategori</label>
+        <select id="kategori" name="kategori">
+          <option value="">Semua</option>
+          <option value="pantai">Pantai</option>
+          <option value="alam">Alam</option>
+          <option value="budaya">Budaya</option>
+          <option value="kuliner">Kuliner</option>
+        </select>
+      </p>
+      <button type="submit">Cari destinasi</button>
+    </form>
+
+    <p>Menampilkan 3 destinasi</p>
+    <ul>
+      <li>
+        <article id="pantai-biru">
+          <h2>Pantai Biru</h2>
+          <img src="img/pantai-biru.jpg" alt="Foto Pantai Biru">
+          <p>Pantai berpasir putih dengan ombak tenang, cocok untuk keluarga dan penikmat matahari terbenam.</p>
+          <dl>
+            <dt>Kategori</dt><dd>Pantai</dd>
+            <dt>Jam buka</dt><dd>06.00 - 18.00</dd>
+            <dt>Tiket</dt><dd>Rp10.000</dd>
+            <dt>Fasilitas</dt><dd>Parkir, toilet umum, warung makan</dd>
+          </dl>
+        </article>
+      </li>
+      <li>
+        <article id="air-terjun-sejuk">
+          <h2>Air Terjun Sejuk</h2>
+          <img src="img/air-terjun-sejuk.jpg" alt="Foto Air Terjun Sejuk">
+          <p>Air terjun bertingkat di tengah hutan dengan jalur trekking ringan.</p>
+          <dl>
+            <dt>Kategori</dt><dd>Alam</dd>
+            <dt>Jam buka</dt><dd>07.00 - 17.00</dd>
+            <dt>Tiket</dt><dd>Rp15.000</dd>
+            <dt>Fasilitas</dt><dd>Parkir, mushola, pemandu lokal</dd>
+          </dl>
+        </article>
+      </li>
+      <li>
+        <article id="desa-lestari">
+          <h2>Desa Wisata Lestari</h2>
+          <img src="img/desa-lestari.jpg" alt="Foto Desa Wisata Lestari">
+          <p>Desa dengan rumah adat, kuliner lokal, dan kelas kerajinan.</p>
+          <dl>
+            <dt>Kategori</dt><dd>Budaya</dd>
+            <dt>Jam buka</dt><dd>08.00 - 16.00</dd>
+            <dt>Tiket</dt><dd>Rp20.000</dd>
+            <dt>Fasilitas</dt><dd>Homestay, kelas kerajinan, kuliner lokal</dd>
+          </dl>
+        </article>
+      </li>
+    </ul>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 PT Bootleg- XYZ WisataNusa AI </p>
+  </footer>
+</body>
+</html>
