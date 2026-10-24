@@ -3,77 +3,109 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="color-scheme" content="light dark">
   <title>Beranda | XYZ WisataNusa AI</title>
+  <!-- 1) Bootstrap: komponen siap pakai (navbar, grid, card, form) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+  <!-- 2) Tailwind (CDN): class utility, SEMUA diawali "tw-" agar tidak bentrok dengan Bootstrap.
+        preflight dimatikan supaya reset CSS Tailwind tidak merusak Bootstrap. -->
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script>
+    tailwind.config = {
+      prefix: "tw-",
+      corePlugins: { preflight: false },
+      theme: { extend: { colors: { brand: "#2f3199", saffron: "#f5b301", soft: "#ececfa", ink: "#1b1b3a" } } }
+    };
+  </script>
+  <!-- 3) CSS buatan sendiri (font, tema, motif tenun) -->
   <link rel="stylesheet" href="../wisatanusa-css/style.css">
 </head>
-<body>
-  <header>
-    <p><strong>XYZ WisataNusa AI</strong></p>
-    <nav aria-label="Menu utama">
-      <ul>
-        <li><a href="index.html">Beranda</a></li>
-        <li><a href="destinasi.html">Destinasi</a></li>
-        <li><a href="rekomendasi.html">Rekomendasi AI</a></li>
-        <li><a href="tentang.html">Tentang</a></li>
-        <li><a href="kontak.html">Kontak</a></li>
-      </ul>
+<body class="d-flex flex-column min-vh-100">
+  <!-- HEADER + NAVBAR Bootstrap: sama di semua halaman (nanti jadi komponen Navbar di React) -->
+  <header class="sticky-top bg-white border-bottom">
+    <nav class="navbar navbar-expand-lg" aria-label="Menu utama">
+      <div class="container">
+        <a class="navbar-brand fw-bold text-primary" href="index.html">XYZ WisataNusa AI</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu"
+                aria-controls="menu" aria-expanded="false" aria-label="Buka menu">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="menu">
+          <ul class="navbar-nav ms-auto gap-lg-1">
+          <li class="nav-item"><a class="nav-link px-3 active" href="index.html" aria-current="page">Beranda</a></li>
+          <li class="nav-item"><a class="nav-link px-3" href="destinasi.html">Destinasi</a></li>
+          <li class="nav-item"><a class="nav-link px-3" href="rekomendasi.html">Rekomendasi AI</a></li>
+          <li class="nav-item"><a class="nav-link px-3" href="tentang.html">Tentang</a></li>
+          <li class="nav-item"><a class="nav-link px-3" href="kontak.html">Kontak</a></li>
+          </ul>
+        </div>
+      </div>
     </nav>
   </header>
 
-  <main>
-    <section aria-labelledby="hero">
-      <h1 id="hero">Temukan wisata Kabupaten XYZ yang cocok untukmu</h1>
-      <p>Jelajahi destinasi dan dapatkan rekomendasi personal berbasis AI.</p>
-      <p>
-        <a href="rekomendasi.html">Coba rekomendasi AI</a> |
-        <a href="destinasi.html">Lihat semua destinasi</a>
-      </p>
+  <main class="container flex-grow-1 py-4 py-lg-5">
+    <!-- Hero: Tailwind. HP = 1 kolom; layar lg ke atas = 2 kolom (lg:tw-grid) -->
+    <section aria-labelledby="hero" class="hero-tenun tw-relative tw-bg-brand tw-text-white tw-rounded-2xl tw-px-6 tw-pt-10 tw-pb-14 lg:tw-px-16 lg:tw-pt-16 lg:tw-pb-24 lg:tw-grid lg:tw-grid-cols-[5fr_4fr] lg:tw-gap-12 lg:tw-items-end">
+      <h1 id="hero" class="tw-text-4xl lg:tw-text-6xl tw-max-w-[18ch]">Temukan wisata Kabupaten XYZ yang cocok untukmu</h1>
+      <div>
+        <p class="tw-text-lg tw-text-indigo-100">Jelajahi destinasi dan dapatkan rekomendasi personal berbasis AI.</p>
+        <p class="tw-flex tw-flex-wrap tw-gap-3 tw-mb-0">
+          <a class="btn btn-warning rounded-pill px-4" href="rekomendasi.html">Coba rekomendasi AI</a>
+          <a class="btn btn-outline-light rounded-pill px-4" href="destinasi.html">Lihat semua destinasi</a>
+        </p>
+      </div>
     </section>
 
-    <section aria-labelledby="unggulan">
-      <h2 id="unggulan">Destinasi unggulan</h2>
-  
-      <ul>
-        <li>
-          <article>
-            <img src="img/pantai-biru.jpg" alt="Hamparan pasir putih Pantai Biru">
-            <h3>Pantai Biru</h3>
-            <p>Pantai berpasir putih dengan pemandangan matahari terbenam.</p>
-            <a href="destinasi.html#pantai-biru">Lihat detail Pantai Biru</a>
+    <!-- Kartu: grid Bootstrap (1 kolom di HP, 2 di tablet, 3 di laptop) -->
+    <section aria-labelledby="unggulan" class="mt-5">
+      <h2 id="unggulan" class="mb-4">Destinasi unggulan</h2>
+      <ul class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 list-unstyled mb-0">
+        <li class="col">
+          <article class="card h-100 shadow-sm">
+            <img src="img/pantai-biru.jpg" class="card-img-top tw-aspect-[4/3] tw-object-cover tw-bg-soft" alt="Hamparan pasir putih Pantai Biru">
+            <div class="card-body">
+              <h3 class="h5">Pantai Biru</h3>
+              <p class="card-text">Pantai berpasir putih dengan ombak tenang, cocok untuk keluarga dan penikmat matahari terbenam.</p>
+              <a href="destinasi.html#pantai-biru" class="text-decoration-none fw-semibold">Lihat detail Pantai Biru</a>
+            </div>
           </article>
         </li>
-        <li>
-          <article>
-            <img src="img/air-terjun-sejuk.jpg" alt="Air terjun bertingkat di tengah hutan">
-            <h3>Air Terjun Sejuk</h3>
-            <p>Air terjun bertingkat dengan jalur trekking ringan.</p>
-            <a href="destinasi.html#air-terjun-sejuk">Lihat detail Air Terjun Sejuk</a>
+        <li class="col">
+          <article class="card h-100 shadow-sm">
+            <img src="img/air-terjun-sejuk.jpg" class="card-img-top tw-aspect-[4/3] tw-object-cover tw-bg-soft" alt="Air terjun bertingkat di tengah hutan">
+            <div class="card-body">
+              <h3 class="h5">Air Terjun Sejuk</h3>
+              <p class="card-text">Air terjun bertingkat di tengah hutan dengan jalur trekking ringan.</p>
+              <a href="destinasi.html#air-terjun-sejuk" class="text-decoration-none fw-semibold">Lihat detail Air Terjun Sejuk</a>
+            </div>
           </article>
         </li>
-        <li>
-          <article>
-            <img src="img/desa-lestari.jpg" alt="Rumah adat di Desa Wisata Lestari">
-            <h3>Desa Wisata Lestari</h3>
-            <p>Rumah adat, kuliner lokal, dan kelas kerajinan.</p>
-            <a href="destinasi.html#desa-lestari">Lihat detail Desa Wisata Lestari</a>
+        <li class="col">
+          <article class="card h-100 shadow-sm">
+            <img src="img/desa-lestari.jpg" class="card-img-top tw-aspect-[4/3] tw-object-cover tw-bg-soft" alt="Rumah adat di Desa Wisata Lestari">
+            <div class="card-body">
+              <h3 class="h5">Desa Wisata Lestari</h3>
+              <p class="card-text">Desa dengan rumah adat, kuliner lokal, dan kelas kerajinan.</p>
+              <a href="destinasi.html#desa-lestari" class="text-decoration-none fw-semibold">Lihat detail Desa Wisata Lestari</a>
+            </div>
           </article>
         </li>
       </ul>
     </section>
 
-    <section aria-labelledby="fitur">
-      <h2 id="fitur">Kenapa WisataNusa AI?</h2>
-      <ol>
-        <li>Informasi wisata terintegrasi dan mudah diakses.</li>
-        <li>Rekomendasi AI sesuai preferensi dan anggaranmu.</li>
-        <li>Membantu promosi potensi wisata Kabupaten XYZ.</li>
+    <section aria-labelledby="fitur" class="mt-5">
+      <h2 id="fitur" class="mb-4">Kenapa WisataNusa AI?</h2>
+      <ol class="row row-cols-1 row-cols-md-3 g-3 list-unstyled mb-0">
+        <li class="col"><div class="tw-h-full tw-bg-white tw-border tw-border-l-[6px] tw-border-l-saffron tw-rounded-lg tw-p-5 tw-font-semibold">Informasi wisata terintegrasi dan mudah diakses.</div></li>
+        <li class="col"><div class="tw-h-full tw-bg-white tw-border tw-border-l-[6px] tw-border-l-saffron tw-rounded-lg tw-p-5 tw-font-semibold">Rekomendasi AI sesuai preferensi dan anggaranmu.</div></li>
+        <li class="col"><div class="tw-h-full tw-bg-white tw-border tw-border-l-[6px] tw-border-l-saffron tw-rounded-lg tw-p-5 tw-font-semibold">Membantu promosi potensi wisata Kabupaten XYZ.</div></li>
       </ol>
     </section>
   </main>
 
-  <footer>
-    <p>&copy; 2026 PT Bootleg- XYZ WisataNusa AI </p>
+  <footer class="tw-bg-ink tw-text-indigo-100 py-3 mt-auto">
+    <div class="container small">&copy; 2026 Kelompok 7 - XYZ WisataNusa AI. Sponsor: Diskominfo Kabupaten XYZ.</div>
   </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
