@@ -6,11 +6,12 @@
    <link rel="stylesheet" href="style.css">
 
    Daftar isi
-   1. Font & variabel      6. Halaman Beranda
-   2. Reset & dasar        7. Halaman Destinasi
-   3. Header, nav, footer  8. Halaman Rekomendasi AI
-   4. Form & tombol        9. Status UI (loading, error, validasi)
-   5. Kartu               10. Responsive (media queries)
+   1. Font & variabel      7. Halaman Destinasi
+   2. Reset & dasar        8. Halaman Rekomendasi AI
+   3. Header, nav, footer  9. Halaman Tentang & Kontak
+   4. Form & tombol       10. Status UI (loading, error, validasi)
+   5. Kartu               11. Responsive (media queries)
+   6. Halaman Beranda
    ========================================================= */
 
 /* ---------- 1. FONT & VARIABEL ---------- */
@@ -186,6 +187,8 @@ p > label {
 }
 p > br { display: none; }         /* <br> di form tidak dipakai lagi */
 
+input[type="text"],
+input[type="email"],
 input[type="search"],
 input[type="number"],
 select,
@@ -412,12 +415,13 @@ dd { margin: 0; }
 
 /* ---------- 8. HALAMAN REKOMENDASI AI ---------- */
 /* Layar kecil: form lalu hasil (1 kolom). Layar besar: lihat bagian 10 */
-main:has(> form[method="post"]) {
+main:has(> section[aria-labelledby="hasil"]),
+main:has(> address) {             /* halaman Kontak memakai pola yang sama */
   display: grid;
   gap: 1.5rem;
   align-content: start;
 }
-/* kolom "Catatan tambahan" selalu selebar form */
+/* isian terakhir (Catatan / Pesan) selalu selebar form */
 form[method="post"] > p:last-of-type { flex-basis: 100%; }
 
 section[aria-labelledby="hasil"] {
@@ -467,7 +471,47 @@ meter::-webkit-meter-optimum-value {
 }
 meter::-moz-meter-bar { background: var(--indigo); }
 
-/* ---------- 9. STATUS UI (loading, error, validasi) ----------
+/* ---------- 9. HALAMAN TENTANG & KONTAK ---------- */
+/* Tentang: paragraf proyek dibuat besar sebagai pernyataan utama.
+   main:has(> h1 + section) = main yang judulnya langsung diikuti section */
+main:has(> h1 + section) section > p {
+  max-width: 60ch;
+  font-size: clamp(1.15rem, 2vw, 1.5rem);
+  line-height: 1.5;
+}
+
+/* Tim pengembang: satu kotak per anggota, penanda belah ketupat
+   (sama dengan ornamen di logo header) */
+main:has(> h1 + section) li {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.9rem 1.1rem;
+  font-weight: 600;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+main:has(> h1 + section) ul { gap: 0.75rem; }
+main:has(> h1 + section) li::before {
+  content: "";
+  flex: none;
+  width: 0.7rem;
+  height: 0.7rem;
+  background: var(--saffron);
+  transform: rotate(45deg);
+}
+
+/* Kontak: <address> tampil sebagai kotak info, bukan miring */
+address {
+  align-self: start;              /* tidak ikut meregang setinggi form */
+  padding: 1.25rem;
+  font-style: normal;
+  background: var(--indigo-soft);
+  border-radius: var(--radius);
+}
+
+/* ---------- 10. STATUS UI (loading, error, validasi) ----------
    Disiapkan untuk minggu React/AJAX. Pakai class ini saat
    data sedang diambil dari API atau saat gagal. */
 .loading {
@@ -513,7 +557,7 @@ textarea:user-invalid {
   color: var(--danger);
 }
 
-/* ---------- 10. RESPONSIVE (media queries) ---------- */
+/* ---------- 11. RESPONSIVE (media queries) ---------- */
 /* Pengguna yang mematikan animasi di sistemnya */
 @media (prefers-reduced-motion: reduce) {
   * { animation: none !important; }
@@ -522,8 +566,8 @@ textarea:user-invalid {
 /* Ponsel */
 @media (max-width: 40rem) {
   main form button { width: 100%; }
-  nav ul { width: 100%; justify-content: space-between; }
-  nav a { padding-inline: 0.6rem; font-size: 0.9rem; white-space: nowrap; }
+  nav ul { width: 100%; }         /* 5 menu: boleh turun ke baris kedua */
+  nav a { padding-inline: 0.7rem; font-size: 0.9rem; }
 }
 
 /* Desktop & laptop */
@@ -542,13 +586,31 @@ textarea:user-invalid {
   }
 
   /* Rekomendasi: form di kiri, hasil di kanan */
-  main:has(> form[method="post"]) {
+  main:has(> section[aria-labelledby="hasil"]) {
     grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
     column-gap: var(--space);
   }
-  main:has(> form[method="post"]) > h1,
-  main:has(> form[method="post"]) > p {
-    grid-column: 1 / -1;          /* judul & pengantar selebar halaman */
+  /* Kontak: info di kiri, form di kanan */
+  main:has(> address) {
+    grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+    column-gap: var(--space);
+  }
+  /* Tentang: penjelasan proyek di kiri, tim di kanan */
+  main:has(> h1 + section) {
+    display: grid;
+    grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+    gap: 1rem var(--space);
+    align-content: start;
+  }
+  main:has(> h1 + section) > section + section { margin-top: 0; }
+  main:has(> h1 + section) ul { grid-template-columns: 1fr; }
+
+  /* judul & pengantar selalu selebar halaman */
+  main:has(> section[aria-labelledby="hasil"]) > h1,
+  main:has(> section[aria-labelledby="hasil"]) > p,
+  main:has(> address) > h1,
+  main:has(> h1 + section) > h1 {
+    grid-column: 1 / -1;
   }
   section[aria-labelledby="hasil"] {
     align-self: start;
