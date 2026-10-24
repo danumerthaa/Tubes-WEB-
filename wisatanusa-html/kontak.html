@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light dark">
+  <title>Kontak | XYZ WisataNusa AI</title>
+</head>
+<body>
+  <header>
+    <p><strong>XYZ WisataNusa AI</strong></p>
+    <nav aria-label="Menu utama">
+      <ul>
+        <li><a href="index.html">Beranda</a></li>
+        <li><a href="destinasi.html">Destinasi</a></li>
+        <li><a href="rekomendasi.html">Rekomendasi AI</a></li>
+        <li><a href="tentang.html">Tentang</a></li>
+        <li><a href="kontak.html">Kontak</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Hubungi kami</h1>
+
+    <address>
+      Diskominfo Kabupaten XYZ<br>
+      Email: <a href="mailto:info@example.com">info@example.com</a>
+    </address>
+
+    <!-- Validasi sisi klien: required, type=email, minlength -->
+    <form action="kontak.html" method="post">
+      <p><label for="nama">Nama</label> <input type="text" id="nama" name="nama" required minlength="3"></p>
+      <p><label for="email">Email</label> <input type="email" id="email" name="email" required></p>
+      <p><label for="pesan">Pesan</label><br><textarea id="pesan" name="pesan" rows="4" cols="40" required minlength="10"></textarea></p>
+      <button type="submit">Kirim pesan</button>
+    </form>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Kelompok 7 - XYZ WisataNusa AI. Sponsor: Diskominfo Kabupaten XYZ.</p>
+  </footer>
+</body>
+</html>
