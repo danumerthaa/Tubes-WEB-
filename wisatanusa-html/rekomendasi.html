@@ -19,7 +19,7 @@
   <!-- 3) CSS buatan sendiri (font, tema, motif tenun) -->
   <link rel="stylesheet" href="../wisatanusa-css/style.css">
 </head>
-<body class="d-flex flex-column min-vh-100">
+<body class="d-flex flex-column min-vh-100" data-halaman="rekomendasi">
   <!-- HEADER + NAVBAR Bootstrap: sama di semua halaman (nanti jadi komponen Navbar di React) -->
   <header class="sticky-top bg-white border-bottom">
     <nav class="navbar navbar-expand-lg" aria-label="Menu utama">
@@ -49,13 +49,14 @@
     <div class="row g-4">
       <!-- Form: 7 dari 12 kolom di laptop, penuh di HP -->
       <div class="col-lg-7">
-        <form action="rekomendasi.html" method="post" class="needs-validation bg-white border rounded p-3 p-lg-4" novalidate>
+        <form id="form-rekomendasi" action="rekomendasi.html" method="post" class="needs-validation bg-white border rounded p-3 p-lg-4" novalidate>
           <fieldset class="mb-3">
             <legend class="fs-6 fw-semibold">Jenis wisata yang kamu suka</legend>
           <div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" id="j-pantai" name="jenis" value="pantai"><label class="form-check-label" for="j-pantai">Pantai</label></div>
           <div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" id="j-alam" name="jenis" value="alam"><label class="form-check-label" for="j-alam">Alam</label></div>
           <div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" id="j-budaya" name="jenis" value="budaya"><label class="form-check-label" for="j-budaya">Budaya</label></div>
           <div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" id="j-kuliner" name="jenis" value="kuliner"><label class="form-check-label" for="j-kuliner">Kuliner</label></div>
+          <div id="error-jenis" class="text-danger small d-none" role="alert">Pilih minimal satu jenis wisata.</div>
           </fieldset>
           <fieldset class="mb-3">
             <legend class="fs-6 fw-semibold">Suasana</legend>
@@ -86,18 +87,10 @@
       <div class="col-lg-5">
         <section aria-labelledby="hasil" aria-live="polite" class="sticky-lg-top tw-bg-soft tw-rounded-lg tw-p-4" style="top: 5rem">
           <h2 id="hasil" class="h4 mb-3">Hasil rekomendasi</h2>
-          <ol class="list-group list-group-numbered">
-          <li class="list-group-item">
-            <h3 class="h6 mb-1">Pantai Biru</h3>
-            <p class="mb-1">Kecocokan: <meter min="0" max="100" value="92">92%</meter> 92%</p>
-            <a href="destinasi.html#pantai-biru" class="text-decoration-none">Lihat detail Pantai Biru</a>
-          </li>
-          <li class="list-group-item">
-            <h3 class="h6 mb-1">Desa Wisata Lestari</h3>
-            <p class="mb-1">Kecocokan: <meter min="0" max="100" value="78">78%</meter> 78%</p>
-            <a href="destinasi.html#desa-lestari" class="text-decoration-none">Lihat detail Desa Wisata Lestari</a>
-          </li>
-          </ol>
+          <p id="hasil-awal" class="mb-0">Isi preferensimu lalu klik "Lihat rekomendasi".</p>
+          <!-- Loading/error dan daftar hasil diisi oleh js/main.js -->
+          <div id="status-hasil"></div>
+          <ol id="daftar-hasil" class="list-group list-group-numbered"></ol>
         </section>
       </div>
     </div>
@@ -108,5 +101,8 @@
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- jQuery lalu JavaScript buatan sendiri -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="js/main.js"></script>
 </body>
 </html>

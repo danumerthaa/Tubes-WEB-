@@ -56,7 +56,7 @@ meter::-webkit-meter-optimum-value { background: #2f3199; border-radius: 999px; 
 meter::-moz-meter-bar { background: #2f3199; }
 
 /* 4. Kartu yang dituju link (destinasi.html#pantai-biru) disorot */
-.card:target { border-color: #2f3199; box-shadow: 0 0 0 4px #f5b301; }
+.card:target, .card.sorot { border-color: #2f3199; box-shadow: 0 0 0 4px #f5b301; }
 
 /* 5. MEDIA QUERY */
 @media (prefers-reduced-motion: reduce) {

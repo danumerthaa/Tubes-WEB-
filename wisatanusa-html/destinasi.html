@@ -19,7 +19,7 @@
   <!-- 3) CSS buatan sendiri (font, tema, motif tenun) -->
   <link rel="stylesheet" href="../wisatanusa-css/style.css">
 </head>
-<body class="d-flex flex-column min-vh-100">
+<body class="d-flex flex-column min-vh-100" data-halaman="destinasi">
   <!-- HEADER + NAVBAR Bootstrap: sama di semua halaman (nanti jadi komponen Navbar di React) -->
   <header class="sticky-top bg-white border-bottom">
     <nav class="navbar navbar-expand-lg" aria-label="Menu utama">
@@ -46,7 +46,7 @@
     <h1 class="text-primary mb-4">Daftar destinasi</h1>
 
     <!-- Form pencarian: Bootstrap row/col + form-control -->
-    <form action="destinasi.html" method="get" role="search" class="row g-3 align-items-end bg-white border rounded p-3 mb-4">
+    <form id="form-cari" action="destinasi.html" method="get" role="search" class="row g-3 align-items-end bg-white border rounded p-3 mb-4">
       <div class="col-12 col-md-5">
         <label for="cari" class="form-label fw-semibold">Cari destinasi</label>
         <input type="search" class="form-control" id="cari" name="q" placeholder="Contoh: pantai">
@@ -60,57 +60,11 @@
       </div>
     </form>
 
-    <p class="fw-semibold">Menampilkan 3 destinasi</p>
-    <ul class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 list-unstyled mb-0">
-        <li class="col">
-          <article class="card h-100 shadow-sm tw-scroll-mt-24" id="pantai-biru">
-            <img src="img/pantai-biru.jpg" class="card-img-top tw-aspect-[4/3] tw-object-cover tw-bg-soft" alt="Foto Pantai Biru">
-            <div class="card-body">
-              <h2 class="h4">Pantai Biru</h2>
-              <p>Pantai berpasir putih dengan ombak tenang, cocok untuk keluarga dan penikmat matahari terbenam.</p>
-              <!-- Detail: grid Tailwind 2 kolom (label | nilai) -->
-              <dl class="tw-grid tw-grid-cols-[auto_1fr] tw-gap-x-4 tw-gap-y-1 tw-text-sm tw-border-t tw-pt-3 tw-mb-0">
-                <dt class="text-secondary">Kategori</dt><dd class="mb-0">Pantai</dd>
-                <dt class="text-secondary">Jam buka</dt><dd class="mb-0">06.00 - 18.00</dd>
-                <dt class="text-secondary">Tiket</dt><dd class="mb-0">Rp10.000</dd>
-                <dt class="text-secondary">Fasilitas</dt><dd class="mb-0">Parkir, toilet umum, warung makan</dd>
-              </dl>
-            </div>
-          </article>
-        </li>
-        <li class="col">
-          <article class="card h-100 shadow-sm tw-scroll-mt-24" id="air-terjun-sejuk">
-            <img src="img/air-terjun-sejuk.jpg" class="card-img-top tw-aspect-[4/3] tw-object-cover tw-bg-soft" alt="Foto Air Terjun Sejuk">
-            <div class="card-body">
-              <h2 class="h4">Air Terjun Sejuk</h2>
-              <p>Air terjun bertingkat di tengah hutan dengan jalur trekking ringan.</p>
-              <!-- Detail: grid Tailwind 2 kolom (label | nilai) -->
-              <dl class="tw-grid tw-grid-cols-[auto_1fr] tw-gap-x-4 tw-gap-y-1 tw-text-sm tw-border-t tw-pt-3 tw-mb-0">
-                <dt class="text-secondary">Kategori</dt><dd class="mb-0">Alam</dd>
-                <dt class="text-secondary">Jam buka</dt><dd class="mb-0">07.00 - 17.00</dd>
-                <dt class="text-secondary">Tiket</dt><dd class="mb-0">Rp15.000</dd>
-                <dt class="text-secondary">Fasilitas</dt><dd class="mb-0">Parkir, mushola, pemandu lokal</dd>
-              </dl>
-            </div>
-          </article>
-        </li>
-        <li class="col">
-          <article class="card h-100 shadow-sm tw-scroll-mt-24" id="desa-lestari">
-            <img src="img/desa-lestari.jpg" class="card-img-top tw-aspect-[4/3] tw-object-cover tw-bg-soft" alt="Foto Desa Wisata Lestari">
-            <div class="card-body">
-              <h2 class="h4">Desa Wisata Lestari</h2>
-              <p>Desa dengan rumah adat, kuliner lokal, dan kelas kerajinan.</p>
-              <!-- Detail: grid Tailwind 2 kolom (label | nilai) -->
-              <dl class="tw-grid tw-grid-cols-[auto_1fr] tw-gap-x-4 tw-gap-y-1 tw-text-sm tw-border-t tw-pt-3 tw-mb-0">
-                <dt class="text-secondary">Kategori</dt><dd class="mb-0">Budaya</dd>
-                <dt class="text-secondary">Jam buka</dt><dd class="mb-0">08.00 - 16.00</dd>
-                <dt class="text-secondary">Tiket</dt><dd class="mb-0">Rp20.000</dd>
-                <dt class="text-secondary">Fasilitas</dt><dd class="mb-0">Homestay, kelas kerajinan, kuliner lokal</dd>
-              </dl>
-            </div>
-          </article>
-        </li>
-    </ul>
+    <p id="jumlah" class="fw-semibold" aria-live="polite">Memuat destinasi...</p>
+    <!-- Status loading/error, pesan kosong, dan kartu diisi oleh js/main.js -->
+    <div id="status-destinasi" aria-live="polite"></div>
+    <p id="kosong-destinasi" class="alert alert-warning d-none" role="status">Tidak ada destinasi yang cocok dengan pencarianmu.</p>
+    <ul id="daftar-destinasi" class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 list-unstyled mb-0"></ul>
   </main>
 
   <footer class="tw-bg-ink tw-text-indigo-100 py-3 mt-auto">
@@ -118,5 +72,8 @@
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- jQuery lalu JavaScript buatan sendiri -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="js/main.js"></script>
 </body>
 </html>
