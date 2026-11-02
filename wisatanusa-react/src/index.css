@@ -1,0 +1,21 @@
+@import url("https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Figtree:wght@400..700&display=swap");
+:root {
+  --font-heading: "Bricolage Grotesque", system-ui, sans-serif;
+  --bs-body-font-family: "Figtree", system-ui, sans-serif;
+  --bs-body-bg: #f8f8fb;
+  --bs-body-color: #1b1b3a;
+  --bs-primary: #2f3199;
+  --bs-primary-rgb: 47, 49, 153;
+  --bs-link-color: #2f3199;
+  --bs-link-hover-color: #23256f;
+  --bs-border-color: #dcdcea;
+}
+h1, h2, h3, h4, .navbar-brand { font-family: var(--font-heading); }
+.btn-primary { --bs-btn-bg: #2f3199; --bs-btn-border-color: #2f3199; --bs-btn-hover-bg: #23256f; --bs-btn-hover-border-color: #23256f; --bs-btn-active-bg: #23256f; }
+.btn-outline-primary { --bs-btn-color: #2f3199; --bs-btn-border-color: #2f3199; --bs-btn-hover-bg: #2f3199; }
+.form-check-input:checked { background-color: #2f3199; border-color: #2f3199; }
+.hero-tenun::after { content: ""; position: absolute; inset: auto 0 0 0; height: 1rem; border-radius: 0 0 1rem 1rem; background: repeating-linear-gradient(90deg, #f5b301 0 1.5rem, #2f3199 1.5rem 2rem, #fff 2rem 2.5rem, #2f3199 2.5rem 4rem); }
+meter { width: min(100%, 12rem); height: 0.8rem; vertical-align: middle; appearance: none; }
+meter::-webkit-meter-bar { background: #dcdcea; border: 0; border-radius: 999px; }
+meter::-webkit-meter-optimum-value { background: #2f3199; border-radius: 999px; }
+@media (min-width: 64rem) { .hero-tenun::after { height: 1.25rem; } }

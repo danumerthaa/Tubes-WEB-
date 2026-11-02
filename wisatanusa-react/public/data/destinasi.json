@@ -1,0 +1,41 @@
+[
+  {
+    "id": "pantai-biru",
+    "nama": "Pantai Biru",
+    "kategori": "pantai",
+    "suasana": "tenang",
+    "deskripsi": "Pantai berpasir putih dengan ombak tenang, cocok untuk keluarga dan penikmat matahari terbenam.",
+    "jamBuka": "06.00 - 18.00",
+    "tiket": 10000,
+    "fasilitas": "Parkir, toilet umum, warung makan",
+    "durasi": 1,
+    "gambar": "img/pantai-biru.jpg",
+    "alt": "Hamparan pasir putih Pantai Biru"
+  },
+  {
+    "id": "air-terjun-sejuk",
+    "nama": "Air Terjun Sejuk",
+    "kategori": "alam",
+    "suasana": "tenang",
+    "deskripsi": "Air terjun bertingkat di tengah hutan dengan jalur trekking ringan.",
+    "jamBuka": "07.00 - 17.00",
+    "tiket": 15000,
+    "fasilitas": "Parkir, mushola, pemandu lokal",
+    "durasi": 1,
+    "gambar": "img/air-terjun-sejuk.jpg",
+    "alt": "Air terjun bertingkat di tengah hutan"
+  },
+  {
+    "id": "desa-lestari",
+    "nama": "Desa Wisata Lestari",
+    "kategori": "budaya",
+    "suasana": "ramai",
+    "deskripsi": "Desa dengan rumah adat, kuliner lokal, dan kelas kerajinan.",
+    "jamBuka": "08.00 - 16.00",
+    "tiket": 20000,
+    "fasilitas": "Homestay, kelas kerajinan, kuliner lokal",
+    "durasi": 2,
+    "gambar": "img/desa-lestari.jpg",
+    "alt": "Rumah adat di Desa Wisata Lestari"
+  }
+]
