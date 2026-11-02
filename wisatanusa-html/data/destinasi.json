@@ -2,37 +2,40 @@
   {
     "id": "pantai-biru",
     "nama": "Pantai Biru",
-    "kategori": "Pantai",
-    "lokasi": "Kabupaten XYZ",
+    "kategori": "pantai",
+    "suasana": "tenang",
     "deskripsi": "Pantai berpasir putih dengan ombak tenang, cocok untuk keluarga dan penikmat matahari terbenam.",
-    "gambar": "img/pantai-biru.jpg",
-    "alt": "Hamparan pasir putih Pantai Biru",
     "jamBuka": "06.00 - 18.00",
-    "tiket": "Rp10.000",
-    "fasilitas": ["Area parkir", "Toilet umum", "Warung makan"]
+    "tiket": 10000,
+    "fasilitas": "Parkir, toilet umum, warung makan",
+    "durasi": 1,
+    "gambar": "img/pantai-biru.jpg",
+    "alt": "Hamparan pasir putih Pantai Biru"
   },
   {
     "id": "air-terjun-sejuk",
     "nama": "Air Terjun Sejuk",
-    "kategori": "Alam",
-    "lokasi": "Kabupaten XYZ",
+    "kategori": "alam",
+    "suasana": "tenang",
     "deskripsi": "Air terjun bertingkat di tengah hutan dengan jalur trekking ringan.",
-    "gambar": "img/air-terjun-sejuk.jpg",
-    "alt": "Air terjun bertingkat di tengah hutan",
     "jamBuka": "07.00 - 17.00",
-    "tiket": "Rp15.000",
-    "fasilitas": ["Area parkir", "Mushola", "Pemandu lokal"]
+    "tiket": 15000,
+    "fasilitas": "Parkir, mushola, pemandu lokal",
+    "durasi": 1,
+    "gambar": "img/air-terjun-sejuk.jpg",
+    "alt": "Air terjun bertingkat di tengah hutan"
   },
   {
     "id": "desa-lestari",
     "nama": "Desa Wisata Lestari",
-    "kategori": "Budaya",
-    "lokasi": "Kabupaten XYZ",
+    "kategori": "budaya",
+    "suasana": "ramai",
     "deskripsi": "Desa dengan rumah adat, kuliner lokal, dan kelas kerajinan.",
-    "gambar": "img/desa-lestari.jpg",
-    "alt": "Rumah adat di Desa Wisata Lestari",
     "jamBuka": "08.00 - 16.00",
-    "tiket": "Rp20.000",
-    "fasilitas": ["Homestay", "Kelas kerajinan", "Kuliner lokal"]
+    "tiket": 20000,
+    "fasilitas": "Homestay, kelas kerajinan, kuliner lokal",
+    "durasi": 2,
+    "gambar": "img/desa-lestari.jpg",
+    "alt": "Rumah adat di Desa Wisata Lestari"
   }
 ]

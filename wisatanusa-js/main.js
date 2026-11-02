@@ -40,6 +40,7 @@ function buatKartu(d) {
             <dt class="text-secondary">Tiket</dt><dd class="mb-0">Rp${d.tiket.toLocaleString("id-ID")}</dd>
             <dt class="text-secondary">Fasilitas</dt><dd class="mb-0">${d.fasilitas}</dd>
           </dl>
+          <a href="detailDestinasi.html?id=${d.id}" class="btn btn-outline-primary btn-sm mt-3">Lihat detail</a>
         </div>
       </article>
     </li>`;

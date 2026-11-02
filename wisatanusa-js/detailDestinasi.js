@@ -17,11 +17,11 @@ const tampilkanError = (pesan) => {
 const render = (d) => {
   document.title = `${d.nama} | XYZ WisataNusa AI`;
   document.getElementById('nama').textContent = d.nama;
-  document.getElementById('kategori').textContent = d.kategori;
+  document.getElementById('kategori').textContent = d.kategori.charAt(0).toUpperCase() + d.kategori.slice(1);
   document.getElementById('deskripsi').textContent = d.deskripsi;
-  document.getElementById('lokasi').textContent = d.lokasi;
+  document.getElementById('lokasi').textContent = d.lokasi || 'Kabupaten XYZ';
   document.getElementById('jam-buka').textContent = d.jamBuka;
-  document.getElementById('tiket').textContent = d.tiket;
+  document.getElementById('tiket').textContent = typeof d.tiket === 'number' ? 'Rp' + d.tiket.toLocaleString('id-ID') : d.tiket;
 
   const gambar = document.getElementById('gambar');
   gambar.src = d.gambar;
@@ -29,7 +29,7 @@ const render = (d) => {
 
   const daftarFasilitas = document.getElementById('fasilitas');
   daftarFasilitas.innerHTML = '';
-  d.fasilitas.forEach((item) => {
+  [].concat(d.fasilitas).forEach((item) => {
     const li = document.createElement('li');
     li.textContent = item;
     daftarFasilitas.appendChild(li);
