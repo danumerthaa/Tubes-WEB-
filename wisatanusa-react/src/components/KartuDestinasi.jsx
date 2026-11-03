@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 export default function KartuDestinasi({ d }) {
   return (
     <li className="col">
@@ -12,6 +13,9 @@ export default function KartuDestinasi({ d }) {
             <dt className="text-secondary">Tiket</dt><dd className="mb-0">Rp{d.tiket.toLocaleString("id-ID")}</dd>
             <dt className="text-secondary">Fasilitas</dt><dd className="mb-0">{d.fasilitas}</dd>
           </dl>
+          <Link to={`/detail?id=${d.id}`} className="btn btn-outline-primary btn-sm mt-3">
+          Lihat detail
+          </Link>
         </div>
       </article>
     </li>

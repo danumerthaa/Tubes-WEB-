@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route, Link, NavLink } from 'react-router-dom';
 import Beranda from './pages/Beranda';
 import Destinasi from './pages/Destinasi';
+import DetailDestinasi from './pages/DetailDestinasi'
 import Rekomendasi from './pages/Rekomendasi';
 import Tentang from './pages/Tentang';
 import Kontak from './pages/Kontak';
@@ -41,6 +42,7 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Beranda />} />
           <Route path="/destinasi" element={<Destinasi />} />
+          <Route path="/detail" element={<DetailDestinasi />} />
           <Route path="/rekomendasi" element={<Rekomendasi />} />
           <Route path="/tentang" element={<Tentang />} />
           <Route path="/kontak" element={<Kontak />} />

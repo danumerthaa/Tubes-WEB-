@@ -11,6 +11,7 @@
 function ambilData(tampilkan, $status) {
   $status.html('<p class="text-center py-4" role="status">Memuat data...</p>');
 
+
   fetch("data/destinasi.json")
     .then((response) => {
       if (!response.ok) throw new Error("gagal");
