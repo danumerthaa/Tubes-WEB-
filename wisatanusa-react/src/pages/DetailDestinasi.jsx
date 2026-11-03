@@ -3,29 +3,29 @@ import { Link, useSearchParams } from 'react-router-dom'
 
 const BASE = import.meta.env.BASE_URL
 
-// Path gambar di JSON ditulis relatif (img/xxx.jpg); dibuat absolut supaya tidak patah di route mana pun
+
 const urlGambar = (path) =>
   /^(https?:)?\/\//.test(path) ? path : BASE + path.replace(/^\//, '')
 
 export default function DetailDestinasi() {
-  // 1. Ambil parameter id dari URL, mis. /detail?id=pantai-biru
+
   const [searchParams] = useSearchParams()
   const id = searchParams.get('id')
 
-  // Hasil fetch disimpan bersama id-nya, supaya tahu hasil itu milik destinasi yang mana
+  
   const [hasil, setHasil] = useState(null)
 
   useEffect(() => {
     if (!id) return
     let batal = false
 
-    // 2. Ambil data dari file JSON di folder public
+  
     fetch(`${BASE}data/destinasi.json`)
       .then((res) => {
         if (!res.ok) throw new Error('Gagal memuat data')
         return res.json()
       })
-      // 3. Cari destinasi yang id-nya sama dengan id di URL
+      
       .then((data) => {
         if (!batal) setHasil({ id, destinasi: data.find((d) => d.id === id) ?? null })
       })
@@ -40,7 +40,6 @@ export default function DetailDestinasi() {
 
   const siap = hasil !== null && hasil.id === id
 
-  // 4. Tentukan yang ditampilkan: error, loading, atau detail destinasi
   let isi
   if (!id) {
     isi = <p className="alert alert-danger" role="alert">Destinasi tidak ditemukan</p>
